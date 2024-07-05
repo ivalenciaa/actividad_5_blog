@@ -1,0 +1,24 @@
+<body>
+  <div class="blog-container">
+      <div class="form-container">
+      <h1>¡Publica una noticia!</h1>
+      <div class="form-section">
+        <form (ngSubmit)="addNews()" #newsForm="ngForm">
+          <input type="text" placeholder="Título" [(ngModel)]="newNews.title" name="title" required>
+          <input type="text" placeholder="URL de la imagen" [(ngModel)]="newNews.image" name="image" required>
+          <textarea placeholder="Cuerpo de la noticia" [(ngModel)]="newNews.body" name="body" required></textarea>
+          <button type="submit" [disabled]="!newsForm.form.valid">Añadir noticia</button>
+        </form>
+      </div>
+  </div>
+    <div class="news-list">
+      <div *ngFor="let news of newsList" class="news-item">
+        <h2>{{ news.title }}</h2>
+        <img [src]="news.image" alt="{{ news.title }}">
+        <p>{{ news.body }}</p>
+        <p><em>{{ news.date | date: 'shortDate' }}</em></p>
+      </div>
+    </div>
+  </div>
+</body>
+  
